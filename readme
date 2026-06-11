@@ -141,7 +141,7 @@ Projeto publicado no GitHub
 Problemas comuns
 Erro: "can't open file"
 O terminal não está na pasta certa. Rode:
-bashcd "Projeto Claude + ChatGPT"
+bashcd "Projeto Pipeline em Python"
 Erro: "No module named pandas"
 As dependências não foram instaladas. Rode:
 bashpip install -r requirements.txt
