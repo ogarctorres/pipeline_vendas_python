@@ -1,0 +1,153 @@
+Pipeline de Vendas em Python
+Projeto construído em sprints semanais para consumir dados de vendas, processar e gerar relatórios automáticos.
+
+Tecnologias usadas
+
+Python 3.x
+Pandas
+Matplotlib
+Pytest
+
+
+Instalação
+Abre o terminal e instala as dependências:
+bashpip install pandas matplotlib pytest
+Ou instala tudo de uma vez pelo requirements.txt:
+bashpip install -r requirements.txt
+
+Estrutura do projeto
+Projeto Claude + ChatGPT/
+├── data/
+│   └── dados.csv               ← dados de vendas (mock)
+├── reports/
+│   ├── receita_por_produto.png
+│   └── evolucao_vendas.png
+├── src/
+│   ├── __init__.py
+│   ├── process_data.py         ← limpeza dos dados
+│   └── graficos.py             ← geração dos gráficos
+├── test/
+│   ├── __init__.py
+│   └── test_process.py         ← testes automatizados
+├── main.py                     ← ponto de entrada do projeto
+├── requirements.txt
+└── README.md
+
+Como usar
+Abre o terminal no VS Code (Ctrl + ') e navega até a pasta do projeto:
+bashcd "Projeto Claude + ChatGPT"
+Roda o pipeline completo com um único comando:
+bashpython main.py
+Isso vai gerar no terminal:
+Iniciando pipeline de vendas...
+
+Carregando e limpando dados...
+Dados carregados: 10 linhas
+
+========== RELATÓRIO DE VENDAS ==========
+Total de vendas:      R$ 23750.00
+Ticket médio:         R$ 2375.00
+Produto mais vendido: Mouse
+=========================================
+
+Gerando gráficos...
+Gráfico 1 salvo!
+Gráfico 2 salvo!
+
+Pipeline finalizado!
+Os gráficos são salvos automaticamente na pasta reports/.
+
+Como rodar os testes
+bashpython -m pytest test/
+Resultado esperado:
+collected 3 items
+test\test_process.py ...
+3 passed in 4.52s
+
+O que cada arquivo faz
+data/dados.csv
+Arquivo com os dados de vendas simulados (mock). Contém as colunas:
+ColunaDescriçãodataData da vendaprodutoNome do produtoquantidadeQuantidade vendidapreco_unitarioPreço por unidadevendedorNome do vendedor
+Para usar dados reais, substitua o conteúdo deste arquivo mantendo o mesmo formato de colunas.
+src/process_data.py
+Contém a função carregar_dados() responsável por:
+
+Ler o arquivo data/dados.csv com Pandas
+Converter a coluna de data para o tipo correto
+Remover linhas duplicadas e vazias
+Criar a coluna total_venda (quantidade × preço)
+Retornar o DataFrame limpo e pronto para uso
+
+src/graficos.py
+Contém a função gerar_graficos() responsável por:
+
+Importar e chamar carregar_dados() do process_data.py
+Gerar gráfico de barras com receita por produto
+Gerar gráfico de linha com evolução de vendas ao longo do tempo
+Salvar os dois gráficos como .png na pasta reports/
+
+main.py
+Ponto de entrada do projeto. Importa e chama as funções em sequência:
+
+carregar_dados() → carrega e limpa os dados
+Calcula e exibe o relatório no terminal
+gerar_graficos() → gera e salva os gráficos
+
+test/test_process.py
+Contém 3 testes automatizados para a função carregar_dados():
+
+test_dataframe_nao_vazio → verifica se o DataFrame tem linhas
+test_coluna_total_venda_existe → verifica se a coluna total_venda foi criada
+test_sem_valores_nulos → verifica se não há valores nulos após a limpeza
+
+
+Conceitos usados
+ConceitoPara que serveimportImporta módulos e bibliotecas externasfrom x import yImporta uma função específica de outro arquivodef função()Define uma função reutilizávelreturnRetorna um valor de dentro de uma funçãoassertVerifica se uma condição é verdadeira (usado em testes)pandasLê e manipula tabelas de dadosmatplotlibGera gráficos e visualizaçõesDataFrame (df)Nome que o Pandas dá para tabelasdf['coluna']Acessa uma coluna da tabelagroupby()Agrupa linhas por uma colunasum() / mean()Soma e média de valoressavefig()Salva o gráfico como imagemos.makedirs()Cria uma pasta se ela não existir
+
+Sprints
+Sprint 1 — Fundação ✅
+
+Leitura do CSV com Pandas
+Limpeza e tratamento dos dados (nulos, duplicatas, tipos)
+Relatório no terminal: total de vendas, ticket médio, produto mais vendido
+
+Sprint 2 — Visualização ✅
+
+Gráfico de barras: receita por produto
+Gráfico de linha: evolução de vendas no tempo
+Gráficos salvos como .png na pasta reports/
+
+Sprint 3 — Refatoração ✅
+
+Estrutura de pastas organizada (data/, src/, reports/)
+Lógica de limpeza isolada em função no process_data.py
+graficos.py importa a função em vez de repetir o código
+main.py orquestra tudo com um único comando
+
+Sprint 4 — Testes Automatizados ✅
+
+Criação da pasta test/ com test_process.py
+3 testes automatizados com Pytest
+Testa se o DataFrame não está vazio, se a coluna total_venda existe e se não há valores nulos
+Rodar com: python -m pytest test/
+
+Sprint 5 — README e GitHub ✅
+
+README completo com descrição, estrutura, instruções e tecnologias
+requirements.txt com as dependências do projeto
+Projeto publicado no GitHub
+
+
+Problemas comuns
+Erro: "can't open file"
+O terminal não está na pasta certa. Rode:
+bashcd "Projeto Claude + ChatGPT"
+Erro: "No module named pandas"
+As dependências não foram instaladas. Rode:
+bashpip install -r requirements.txt
+Erro: "No such file or directory: dados.csv"
+O caminho do arquivo está errado. Confirme que o dados.csv está dentro da pasta data/ e que o process_data.py usa 'data/dados.csv'.
+Código rodou mas não mostrou nada
+O arquivo não foi salvo. Use Ctrl + S antes de rodar.
+Pytest não reconhecido
+Use python -m pytest test/ em vez de pytest test/.
