@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pipeline de Vendas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">pipeline de vendas — sprints 1 a 5</div>
+    <h1>De CSV bruto a <em>relatório</em> e gráficos, em segundos.</h1>
+    <p class="hero-sub">
+      Carrega seu <code>dados.csv</code> e veja o mesmo resultado do <code>main.py</code>:
+      limpeza, métricas e visualizações, processados aqui no navegador.
+    </p>
+  </section>
+
+  <section class="upload-section">
+    <div class="section-tag"><span class="num">01</span> carregar dados</div>
+
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Selecionar arquivo CSV">
+      <div class="dropzone-icon">＋</div>
+      <div class="dropzone-text">Arraste seu CSV aqui ou clique para selecionar</div>
+      <div class="dropzone-hint">data · produto · quantidade · preco_unitario · vendedor</div>
+    </div>
+
+    <div class="upload-actions">
+      <a href="#" class="sample-link" id="sample-link">→ usar dados de exemplo</a>
+    </div>
+
+    <input type="file" id="file-input" accept=".csv">
+    <div class="status-line" id="status"></div>
+    <div class="error-box" id="error-box"></div>
+  </section>
+
+  <div id="results">
+
+    <div class="section-tag"><span class="num">02</span> relatório</div>
+    <section class="stats">
+      <div class="stat-card primary">
+        <div class="stat-label">Total de vendas</div>
+        <div class="stat-value" id="total-vendas">—</div>
+        <div class="stat-foot">soma de quantidade × preço</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Ticket médio</div>
+        <div class="stat-value teal" id="ticket-medio">—</div>
+        <div class="stat-foot">por pedido</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Produto mais vendido</div>
+        <div class="stat-value violet" id="produto-top">—</div>
+        <div class="stat-foot" id="produto-top-qtd">—</div>
+      </div>
+    </section>
+
+    <div class="section-tag"><span class="num">03</span> gráficos</div>
+    <section class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-head">
+          <div class="chart-title">Receita por produto</div>
+          <div class="chart-meta">receita_por_produto.png</div>
+        </div>
+        <div class="chart-wrap"><canvas id="chart-receita"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-head">
+          <div class="chart-title">Evolução de vendas</div>
+          <div class="chart-meta">evolucao_vendas.png</div>
+        </div>
+        <div class="chart-wrap"><canvas id="chart-evolucao"></canvas></div>
+      </div>
+    </section>
+
+    <div class="section-tag"><span class="num">04</span> dados limpos</div>
+    <section class="table-section">
+      <div class="table-card">
+        <div class="table-scroll">
+          <table>
+            <thead id="table-head"></thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <span>pipeline_vendas · projeto Python → web</span>
+    <div class="pipeline-flow">
+      <span>process_data.py</span><span class="arrow">→</span><span>graficos.py</span><span class="arrow">→</span><span>main.py</span>
+    </div>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
