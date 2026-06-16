@@ -16,7 +16,7 @@ Ou instala tudo de uma vez pelo requirements.txt:
 bashpip install -r requirements.txt
 
 Estrutura do projeto
-Projeto Claude + ChatGPT/
+Projeto Pipeline em Python/
 ├── data/
 │   └── dados.csv               ← dados de vendas (mock)
 ├── reports/
