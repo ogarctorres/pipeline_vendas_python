@@ -35,7 +35,7 @@ Projeto Pipeline em Python/
 
 Como usar
 Abre o terminal no VS Code (Ctrl + ') e navega até a pasta do projeto:
-bashcd "Projeto Claude + ChatGPT"
+bashcd "Projeto Pipeline em Python"
 Roda o pipeline completo com um único comando:
 bashpython main.py
 Isso vai gerar no terminal:
