@@ -18,7 +18,7 @@ bashpip install -r requirements.txt
 Estrutura do projeto
 Projeto Pipeline em Python/
 ├── data/
-│   └── dados.csv               ← dados de vendas (mock)
+│   └── dados.csv              ← dados de vendas (mock)
 ├── reports/
 │   ├── receita_por_produto.png
 │   └── evolucao_vendas.png
